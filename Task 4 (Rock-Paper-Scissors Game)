@@ -1,0 +1,56 @@
+import random
+
+def userchoice():
+    while True:
+        choice = input("Enter your move (rock, paper, or scissors): ").lower()
+        if choice in ['rock', 'paper', 'scissors']:
+            return choice
+        else:
+            print("Invalid Move. Please enter the valid move (rock, paper, or scissors)")
+
+def autochoice():
+    return random.choice(['rock', 'paper', 'scissors'])
+
+def ChooseWinner(Usermove, Automove):
+    if Usermove == Automove:
+        return "It's a tie."
+    elif ((Usermove == 'rock' and Automove == 'scissors') or
+          (Usermove == 'paper' and Automove == 'rock') or
+          (Usermove == 'scissors' and Automove == 'paper')):
+        return "You Win."
+    else:
+        return "Computer Wins."
+
+def StartGame():
+    print("Welcome to Rock Paper Scissors Game.")
+
+    round_number = 0
+    userscore = 0
+    autoscore = 0
+
+    while True:
+        round_number += 1
+        print("\nRound", round_number)
+        user_move = userchoice()
+        auto_move = autochoice()
+
+        print("Your Move:", user_move)
+        print("Computer Move:", auto_move)
+
+        result = ChooseWinner(user_move, auto_move)
+        print(result)
+
+        if result == "You Win.":
+            userscore += 1
+        elif result == "Computer Wins.":
+            autoscore += 1
+
+        print("Score - You:", userscore, "Computer:", autoscore)
+
+        play_again = input("Do you want to play again? (yes/no): ").lower()
+        if play_again != 'yes':
+            break
+
+    print("Thanks for playing!")
+
+StartGame()
