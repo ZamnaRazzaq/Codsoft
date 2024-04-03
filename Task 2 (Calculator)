@@ -1,0 +1,22 @@
+operand1 = float(input("Enter the first Number: "))
+operand2 = float(input("Enter the second Number: "))
+operator = input("Enter The Operator: ")
+
+if operator == "+":
+    result = operand1 + operand2
+elif operator == "-":
+    result = operand1 - operand2
+elif operator == "*":
+    result = operand1 * operand2
+elif operator == "/":
+    if operand2 != 0:
+        result = operand1 / operand2
+    else:
+        print("Division by zero is undefined, Please enter any number other than zero")
+        result = None
+else:
+    print("Invalid operation")
+    result = None
+
+if result is not None:
+    print("Ans: ", result)
